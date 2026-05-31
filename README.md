@@ -4,7 +4,7 @@
 
 ## Instructor
 
-- Dr. Nikolay Oskolkov, Metabolic Research Group leader (PI), National Institute of Research and Innovation (NIRI), Riga, Latvia
+- Dr. Nikolay Oskolkov, Metabolic Research Group leader (PI), National Institute of Research and Innovation (NIRI), Riga, Latvia, and Biology department, Lund University Sweden
 
 ## Course overview
 The study of ancient microbial, animal, and plant DNA from archaeological samples is a rapidly expanding field with significant potential for uncovering insights into past environments, lifestyles, and diseases. However, the limited quantity and degraded quality of ancient DNA pose significant challenges to computational analysis. In this course, we will explore the key challenges and analytical methods in ancient metagenomics, focusing on a comprehensive understanding and practical implementation of the ancient metagenomic workflow, aMeta.
