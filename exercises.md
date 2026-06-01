@@ -167,7 +167,6 @@ conda activate ancientmetagenomics
 fastp --in1 G65860_pe_1.fastq.gz --in2 G65860_pe_2.fastq.gz -p -c \
 --merge --merged_out=G65860.trimmed_merged.fastq.gz \
 -h G65860_fastp_report.html -j G65860_fastp_report.json -w 20 -l 30
-done
 ```
 
 Please open the `G65860_fastp_report.html` file and try to understand its content and compare it with the FastQC / MultiQC report. Please pay attention to the insert size metrics which will be important for the de-novo assembly analysis in the end of the course. 
