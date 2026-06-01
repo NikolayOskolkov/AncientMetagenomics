@@ -271,7 +271,7 @@ We can filter the KrakenUniq output with respect to both depth (*taxReads*) and 
 cd 05_TAXONOMIC_PROFILE
 for i in $(ls *.krakenuniq.output)
 do
-~/Share/scripts/filter_krakenuniq.py $i 1000 200 ~/Share/scripts/pathogenomesFound.tab
+~/Share/scripts/filter_krakenuniq.py $i 1000 200 ~/Share/scripts/pathogensfound.very_inclusive.tab
 done
 cd ..
 ```
