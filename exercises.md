@@ -207,7 +207,7 @@ mkdir 04_HOST_REMOVAL
 conda activate aMeta
 
 for sample in $(cat SAMPLES.txt); do
-	bowtie2 --large-index -x ~/Share/Databases/hg38/hg38.fa.gz --end-to-end --threads 4 --very-sensitive \
+	bowtie2 -x ~/Share/Databases/hg38/hg38.fa.gz --end-to-end --threads 4 --very-sensitive \
 	03_TRIMMED/${sample}.trimmed.fastq.gz | samtools view -bS -h -@ 4 - \
 	> 04_HOST_REMOVAL/${sample}_aligned_to_hg38.bam
 	
