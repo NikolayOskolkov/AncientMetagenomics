@@ -156,10 +156,9 @@ While `Cutadapt` is running: looking at the [online manual](https://cutadapt.rea
 
 ### Trimming and merging PE reads with fastp, solving polyG-tails problem
 
+Often ancient metagenomics data are paired-end (PE), therefore a good practice is to merge the overlapping PE reads after adapter removal. Cutadapt cannot do it, therefore we recommend using `fastp`. Another advantage of `fastp` is that it can handle the polyG-tail problem that comes because of the two-color chemistry used in NovaSeq and NextSeq. Below, for demonstratio purposes, we will use another (modern infant stool sample) PE sample from the DIABIMMUNE project https://diabimmune.broadinstitute.org/diabimmune/three-country-cohort/resources/metagenomic-sequence-data.
+
 ```bash
-
-# Download a PE sample from https://diabimmune.broadinstitute.org/diabimmune/three-country-cohort/resources/metagenomic-sequence-data
-
 wget https://diabimmune.broadinstitute.org/diabimmune/data/16/G65860_pe_1.fastq.gz
 wget https://diabimmune.broadinstitute.org/diabimmune/data/16/G65860_pe_2.fastq.gz 
 
