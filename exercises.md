@@ -600,6 +600,7 @@ maDamage delivers a bunch of useful statistics, among other read length distribu
 Another useful tool that can be applied to assess how DNA is damaged is [PMDtools](https://github.com/pontussk/PMDtools) which is a maximum-likelihood probabilistic model that calculates an ancient score, **PMD score**, for each read. The ability of PMDtools to infer ancient status with a single read resolution is quite unique and different from mapDamage that can only assess deamination based on a number of reads. PMD scores can be computed using the following command line, please note that Python2 is needed for this purpose.
 
 ```bash
+# conda create -y -n py27 python=2.7
 git clone https://github.com/pontussk/PMDtools
 
 conda deactivate
