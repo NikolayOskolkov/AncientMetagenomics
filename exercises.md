@@ -141,7 +141,7 @@ for sample in $(cat SAMPLES.txt); do
   cutadapt 01_DATA/${sample}.fastq.gz \
            -o 03_TRIMMED/${sample}.trimmed.fastq.gz \
            -a AGATCGGAAGAG \
-           -m 50 \
+           -m 30 \
            -q 20 \
            -j 4 > 03_TRIMMED/${sample}.log
 done
