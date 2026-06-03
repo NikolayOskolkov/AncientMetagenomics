@@ -586,6 +586,8 @@ Deamination profile of a damaged DNA demonstrate an enrichment of C / T polymorp
 # NOTE: you might need to install a few R packages:
 # Rscript -e "install.packages(c('inline','ggplot2','gam','Rcpp','RcppGSL'),repos='https://cloud.r-project.org')"
 
+conda activate aMeta
+
 mapDamage -i Y.pestis_sample10.sorted.bam -r NC_017168.1.fasta \
 -d MAPDAMAGE --merge-reference-sequences --no-stats
 ```
