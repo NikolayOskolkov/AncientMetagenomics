@@ -607,7 +607,7 @@ git clone https://github.com/pontussk/PMDtools
 conda deactivate
 conda activate py27
 
-samtools view -h Y.pestis_sample10.bam | python2 PMDtools/pmdtools.0.60.py \
+samtools view -h Y.pestis_sample10.bam | python2 ~/AncientMetagenomics/PMDtools/pmdtools.0.60.py \
  --printDS > PMDscores.txt
 ```
 
