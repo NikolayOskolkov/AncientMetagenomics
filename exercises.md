@@ -295,7 +295,6 @@ The idea here is to:
 - Learn what are the main (most abundant) taxa in our sample.
 - Learn about potential differences in community composition between the samples.
 - Learn what fraction of the community we were actually able to identify at, let's say, the genus level.
-- Compare the taxonomic profiles obtainted from Illumina and Nanopore data.
 
 Hopefully you will be able to learn a bit about these metagenomic datasets. And realize that there is so much that still remains unknown... We recommend to use [R / Rstudio](https://posit.co/download/rstudio-desktop/) for visualization of microbial abundances in your sample. For example, one can use [Pavian](https://github.com/fbreitwieser/pavian) tool:
 
@@ -959,38 +958,20 @@ In this setion we have learned that:
 
 ## Microbial contamination in eukaryotic references
 
-In this exercise we will explore a computational workflow GENEX for detecting coordinates of microbial-like sequences in eukaryotic reference genomes. The workflow accepts a reference genome in FASTA-format and outputs coordinates of microbial-like regions in BED-format. The workflow builds a Bowtie2 index of the eukaryotic reference genome and aligns pre-computed microbial GTDB v.214 (https://gtdb.ecogenomic.org/) pseudo-reads to the reference, then custom scripts are used for detection of the positions of covered regions and quantification of most abundant microbial contaminants.
+In this exercise we will explore a computational workflow for detecting coordinates of microbial-like sequences in eukaryotic reference genomes. The workflow accepts a reference genome in FASTA-format and outputs coordinates of microbial-like regions in BED-format. The workflow builds a Bowtie2 index of the eukaryotic reference genome and aligns pre-computed microbial GTDB v.214 (https://gtdb.ecogenomic.org/) pseudo-reads to the reference, then custom scripts are used for detection of the positions of covered regions and quantification of most abundant microbial contaminants.
 
-Please note that in the gitub reporsitory of the GENEX workflow, we provide a small subset of microbial pseudo-reads for demonstration purposes, the full dataset is available at the SciLifeLab Figshare https://doi.org/10.17044/scilifelab.28491956. Please clone the GENEX workflow githib repository 
+Please note that in this gitub reporsitory, we provide a small subset of microbial pseudo-reads for demonstration purposes, the full dataset is available at the SciLifeLab Figshare https://doi.org/10.17044/scilifelab.28491956.
+
+Please clone this repository and read the very detailed `vignette.html`, please follow the preparation steps described in the vignette, after that the workflow can be executed as:
 
     cd /home/nikolay
     git clone https://github.com/NikolayOskolkov/MCWorkflow
     cd MCWorkflow
-    git checkout 2fdf5da
-
-The `git checkout 2fdf5da` is needed to switch to the very first and the most stable version of the GENEX workflow. Please read the very detailed `vignette.html` and follow the preparation steps described in the vignette. 
-
-The workflow has the following format:
-
-./micr_cont_detect.sh REF_GENOME INPUT_DIR REFSEQ_OR_GTDB THREADS MICR_READS GTDB_ANNOT
-
-where:
-
-    REF_GENOME - gzipped eukaryotic reference genome in FASTA-format (no path is needed, just the name of the file)
-    INPUT_DIR - directory containing the eukaryotic reference genome (here you need to provide the absolute path)
-    REFSEQ_OR_GTDB - whether RefSeq OR GTDB sliced microbial pseudo-reads are used, can only be "RefSeq" or "GTDB"
-    THERADS - number of threads available
-    MICR_READS - GTDB or RefSeq microbial pseudo-reads provided together with the workflow (no path is needed, just the name of the file)
-    GTDB_ANNOT - GTDB annotation file GTDB_fna2name.txt provided together with the workflow
-
-Now we can start the workflow with the following command line:
-
     ./micr_cont_detect.sh GCF_002220235.fna.gz /home/nikolay/MCWorkflow/data GTDB 4 \
     GTDB_sliced_seqs_sliding_window.fna.gz GTDB_fna2name.txt
 
-For the toy-dataset and the small eukaryotic reference genome, the workflow takes only a few seconds to finish. Please note that for real-world applications, the alignment step is the most time consuming. Since the full GTDB sliced microbial pseudo-reads data set includes 26 billion reads, to our experience, the alignment to e.g. mammalian reference genomes can take up to 48 hours on an HPC compute node with 20 cores. Multi-threading is crucial here, more available threads may considerable speed up the workflow execution. The vignette `vignette.html` walks you through the explanations of the workflow parameters and interpretation of the output files.
+The vignette `vignette.html` walks you through the explanations of the workflow parameters and interpretation of the output files.
 
-Let us now go through the main outputs-files of the workflow. First of all, we see the bt2l Bowtie2 index-files within the data-folder, and the verbose output of bowtie2-build command was written to bowtie2-build.log file. Next, all the main outputs of the workflow were placed to the GCF_002220235.fna.gz_GTDB folder, please navigate to the folder and check its content. Here you can see a number of files. Probably the main file is coords_micr_contam_GCF_002220235.fna.gz.txt, this is the coordinates of microbial-like regions in BED-format (despite the file does not have *.bed - extension). The columns in this file have the following meaning: 1) name (id) of the eukaryotic reference genome profiles, 2) contig / scaffold / chromosome id within the eukaryotic reference genome containing microvbial-like region, 3) start coordinate of the detected microbial-like region, 4) end coordinate of the detected microbial-like region, 5) genomic length of the microbial-like region, 6) total number of reads aligned to the detected microbial-like region, 7) average number of reads supporting each position within the detected microbial-like region, 8) the next five columns represent top abundant microbial species for each detected microbial-like region (the number of reads is reported for each of the top abundant microbes); if fewer than five unique microbes are dicovered within the microbial-like region, the rest of the columns contain recods "NA_reads_NA".
 
 
 
