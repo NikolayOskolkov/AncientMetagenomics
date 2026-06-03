@@ -968,7 +968,7 @@ Please clone this repository and read the very detailed `vignette.html`, please 
     cd /home/nikolay
     git clone https://github.com/NikolayOskolkov/MCWorkflow
     cd MCWorkflow
-	git checkout 2fdf5da
+    git checkout 2fdf5da
     ./micr_cont_detect.sh GCF_002220235.fna.gz /home/nikolay/MCWorkflow/data GTDB 4 \
     GTDB_sliced_seqs_sliding_window.fna.gz GTDB_fna2name.txt
 
