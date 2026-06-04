@@ -1225,7 +1225,7 @@ To quantify abundance of each assembled contig, let us now align the trimmed rea
 bowtie2-build --large-index 08_ASSEMBLY/final.contigs.fa 08_ASSEMBLY/final.contigs.fa --threads 4
 
 bowtie2 --large-index -x 08_ASSEMBLY/final.contigs.fa --end-to-end --threads 4 --very-sensitive \
-03_TRIMMED/${sample}.trimmed.fastq.gz | samtools view -bS -h -q 1 -@ 4 - \
+03_TRIMMED/sample10.trimmed.fastq.gz | samtools view -bS -h -q 1 -@ 4 - \
 > 09_ASSEMBLY_QC/aligned_to_assembled_contigs.bam
 
 samtools view 09_ASSEMBLY_QC/aligned_to_assembled_contigs.bam | cut -f3 > 09_ASSEMBLY_QC/contig_count.txt
